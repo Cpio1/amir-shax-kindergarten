@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #fff8ec;
+  --color-cream-deep: #fcefd9;
+  --color-sun: #ffc94d;
+  --color-sun-soft: #ffeaa8;
+  --color-sun-deep: #e9a316;
+  --color-leaf: #9fd9a6;
+  --color-leaf-soft: #def3dc;
+  --color-leaf-deep: #3d9358;
+  --color-sky: #a9dbf5;
+  --color-sky-soft: #e2f3fc;
+  --color-sky-deep: #3584b8;
+  --color-peach: #ffb89c;
+  --color-peach-soft: #ffe4d7;
+  --color-peach-deep: #e0704a;
+  --color-ink: #3b3352;
+  --color-ink-soft: #6c6582;
+
+  --font-display: var(--font-comfortaa), "Nunito", system-ui, sans-serif;
+  --font-sans: var(--font-nunito), system-ui, sans-serif;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-slow: float 9s ease-in-out infinite;
+  --animate-sway: sway 7s ease-in-out infinite;
+  --animate-spin-slow: spin 40s linear infinite;
+  --animate-drift: drift 22s ease-in-out infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+  @keyframes sway {
+    0%, 100% { transform: rotate(-6deg); }
+    50% { transform: rotate(6deg); }
+  }
+  @keyframes drift {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(28px); }
+  }
+}
+
+/* Только светлая тема */
+:root {
+  color-scheme: light;
+  --header-h: 64px;
+}
+
+@media (min-width: 1024px) {
+  :root { --header-h: 72px; }
+}
+
+/* Аккуратный масштаб интерфейса ≈ 90% */
+html {
+  font-size: 90%;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Секции полностью попадают в видимую область под фиксированной шапкой */
+section[id] {
+  scroll-margin-top: calc(var(--header-h) + 8px);
+}
+
+::selection {
+  background: var(--color-sun-soft);
+}
+
+.blob-1 { border-radius: 62% 38% 55% 45% / 48% 58% 42% 52%; }
+.blob-2 { border-radius: 42% 58% 38% 62% / 55% 40% 60% 45%; }
+.blob-3 { border-radius: 55% 45% 62% 38% / 40% 55% 45% 60%; }
+
+/* Появление при прокрутке */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--delay, 0ms);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
