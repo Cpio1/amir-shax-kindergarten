@@ -8,22 +8,31 @@ import { Gallery } from "@/components/Gallery";
 import { Documents } from "@/components/Documents";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
+import { MobileSite } from "@/components/mobile/MobileSite";
 
 export default function Home() {
   return (
     <>
-      <Header />
-      <main id="main">
-        <Hero />
-        <About />
-        <Groups />
-        <Classes />
-        <Nutrition />
-        <Gallery />
-        <Documents />
-        <Contact />
-      </main>
-      <Footer />
+      {/* Десктопная версия: от 768px */}
+      <div className="hidden md:block">
+        <Header />
+        <main id="main">
+          <Hero />
+          <About />
+          <Groups />
+          <Classes />
+          <Nutrition />
+          <Gallery />
+          <Documents />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+
+      {/* Мобильная версия: до 767px */}
+      <div className="md:hidden">
+        <MobileSite />
+      </div>
     </>
   );
 }

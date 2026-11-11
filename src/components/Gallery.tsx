@@ -169,7 +169,7 @@ type LightboxProps = {
   lang: "kk" | "ru";
 };
 
-function Lightbox({ index, onChange, onClose, labels, lang }: LightboxProps) {
+export function Lightbox({ index, onChange, onClose, labels, lang }: LightboxProps) {
   const count = galleryImages.length;
   const img = galleryImages[index];
   const closeRef = useRef<HTMLButtonElement>(null);

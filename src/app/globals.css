@@ -39,23 +39,53 @@
     0%, 100% { transform: translateX(0); }
     50% { transform: translateX(28px); }
   }
-  @keyframes pop-in {
-    from { opacity: 0; transform: translateY(18px) scale(0.96); }
-    to { opacity: 1; transform: none; }
-  }
-  @keyframes fade-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  @keyframes zoom-in {
-    from { opacity: 0; transform: scale(0.94); }
-    to { opacity: 1; transform: none; }
-  }
 }
+
+/* Анимации галереи и мобильной версии (вне @theme, чтобы попадали в CSS всегда) */
+@keyframes pop-in {
+  from { opacity: 0; transform: translateY(18px) scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes zoom-in {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes m-wobble {
+  0%, 100% { transform: rotate(-4deg) scale(1); }
+  50% { transform: rotate(3deg) scale(1.03); }
+}
+@keyframes m-bob {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-7px) rotate(3deg); }
+}
+@keyframes m-letter {
+  0% { opacity: 0; transform: translateY(0.5em) scale(0.6); }
+  60% { opacity: 1; transform: translateY(-0.08em) scale(1.08); }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes m-nudge {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(6px); }
+}
+@keyframes m-pin {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* Мягкая «органическая» форма фото в мобильной версии */
+.m-shape-hero { border-radius: 46% 54% 42% 58% / 40% 44% 56% 60%; }
+.m-shape-soft { border-radius: 2.2rem 4rem 2.2rem 4rem / 2.8rem 3rem 2.8rem 3rem; }
+
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
 
 /* Только светлая тема */
 :root {
-  color-scheme: light;
+  color-scheme: only light;
   --header-h: 64px;
 }
 
