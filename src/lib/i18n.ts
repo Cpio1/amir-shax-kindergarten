@@ -83,6 +83,10 @@ const kk = {
     placeholder: "Фото жақында",
     more: "Көбірек көрсету",
     less: "Жасыру",
+    open: "Фотоны үлкейту",
+    close: "Жабу",
+    prev: "Алдыңғы фото",
+    next: "Келесі фото",
   },
   documents: {
     eyebrow: "Ашықтық",
@@ -193,6 +197,10 @@ const ru: Dict = {
     placeholder: "Фото скоро",
     more: "Показать больше",
     less: "Свернуть",
+    open: "Увеличить фото",
+    close: "Закрыть",
+    prev: "Предыдущее фото",
+    next: "Следующее фото",
   },
   documents: {
     eyebrow: "Открытость",

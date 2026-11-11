@@ -88,6 +88,7 @@ export function Hero() {
                   priority
                   sizes="(min-width: 1024px) 460px, 80vw"
                   className="object-cover"
+                  style={{ objectPosition: siteConfig.heroImagePosition }}
                 />
               ) : (
                 <div className="flex h-full flex-col items-center justify-center gap-3 text-center">

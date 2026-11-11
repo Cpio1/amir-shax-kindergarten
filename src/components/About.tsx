@@ -1,13 +1,16 @@
 "use client";
 
+import Image from "next/image";
 import { useLang } from "./LanguageProvider";
 import { Reveal } from "./Reveal";
 import { Flower, SectionTitle, Star, Wave } from "./Decor";
 import { IconBaby, IconBowl, IconChat, IconClock, IconHeart, IconSun, IconUsers } from "./Icons";
+import { siteConfig } from "@/lib/site";
 
 export function About() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const a = t.about;
+  const photo = siteConfig.aboutImage;
 
   const facts = [
     { ...a.facts.age, icon: IconBaby, cls: "bg-peach-soft", ic: "bg-peach text-white", shape: "rounded-[2rem_2rem_2rem_0.6rem]" },
@@ -37,6 +40,23 @@ export function About() {
                 <span className="font-bold">{a.facts.lang.label}:</span> {a.facts.lang.value}
               </p>
             </div>
+
+            {photo && (
+              <div className="group relative mt-7">
+                <div className="blob-3 absolute -inset-2 -rotate-2 bg-sun-soft transition-transform duration-700 group-hover:rotate-1" aria-hidden="true" />
+                <div className="relative aspect-[16/10] overflow-hidden rounded-[2.6rem_1.2rem_3.2rem_1.2rem] border-[5px] border-white shadow-[0_20px_40px_-22px_rgba(59,51,82,0.45)]">
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt[lang]}
+                    fill
+                    sizes="(min-width: 1024px) 520px, (min-width: 640px) 90vw, 100vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                    style={{ objectPosition: photo.position }}
+                  />
+                </div>
+                <Star className="animate-float absolute -top-3 -right-2 h-7 w-7" fill="#ffb89c" />
+              </div>
+            )}
           </Reveal>
 
           {/* Карточки фактов — разные скругления, шахматное смещение */}
